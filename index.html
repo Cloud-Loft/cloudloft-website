@@ -1,52 +1,1037 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cloud Loft Hosting</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <script defer src="assets/js/script.js"></script>
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cloud Loft Hosting offers secure, solar-powered cloud hosting with zero-knowledge encryption for developers, businesses, and privacy-conscious users.">
+    <meta property="og:title" content="Cloud Loft Hosting - Secure, Eco-Friendly Cloud Solutions">
+    <meta property="og:description" content="Discover privacy-first cloud hosting powered by solar energy.">
+    <meta property="og:image" content="https://cloudlofthosting.com/og-image.jpg">
+    <meta property="og:url" content="https://cloudlofthosting.com">
+    <title>Cloud Loft Hosting - Secure, Solar-Powered Cloud Solutions</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --primary: #55BFFA;
+            --accent: #29A5EF;
+            --text: #333;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg: #1a1a1a;
+            --text: #e0e0e0;
+            --glass-bg: rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Scroll Progress */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--accent);
+            width: 0;
+            z-index: 2000;
+            transition: width 0.2s ease;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            background: var(--bg);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--text);
+        }
+
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: #ffffff;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #particles-js {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-content {
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta {
+            display: inline-block;
+            background: #ffffff;
+            color: var(--accent);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+        }
+
+        .cta:hover::after {
+            width: 200px;
+            height: 200px;
+        }
+
+        .cta:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .hero .secondary-cta {
+            background: transparent;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            margin-left: 1rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            color: var(--accent);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: #f5f5f5;
+        }
+
+        .pricing-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-toggle label {
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .pricing-toggle input {
+            display: none;
+        }
+
+        .pricing-toggle input:checked + label {
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        .plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .plan {
+            background: var(--bg);
+            padding: 2rem;
+            border-radius: 15px;
+            position: relative;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .plan.popular::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .plan:hover {
+            transform: scale(1.05);
+        }
+
+        .plan h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .plan p {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .plan ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .plan li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .plan li svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--accent);
+        }
+
+        .plan .cta {
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: #ffffff;
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            z-index: 10;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            color: var(--accent);
+        }
+
+        .swiper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .swiper-slide {
+            padding: 2rem;
+            background: var(--bg);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .swiper-slide p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .swiper-slide h4 {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .stars svg {
+            width: 20px;
+            height: 20px;
+            fill: #f1c40f;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            color: var(--accent);
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 2rem auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: var(--bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: #f5f5f5;
+        }
+
+        .contact h2 {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            color: var(--accent);
+        }
+
+        .contact form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact input,
+        .contact textarea {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            background: var(--bg);
+            transition: border-color 0.3s ease;
+        }
+
+        .contact input:focus,
+        .contact textarea:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+
+        .contact button {
+            background: var(--accent);
+            color: #ffffff;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .contact button:hover {
+            background: var(--primary);
+        }
+
+        .form-message {
+            display: none;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        .form-message.success {
+            color: #27ae60;
+        }
+
+        .form-message.error {
+            color: #c0392b;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text);
+            color: #ffffff;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+        }
+
+        .footer-grid h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-grid ul {
+            list-style: none;
+        }
+
+        .footer-grid a:hover {
+            color: var(--primary);
+        }
+
+        .newsletter form {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 400px;
+            margin: 1rem auto;
+        }
+
+        .newsletter input {
+            flex: 1;
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .newsletter button {
+            background: var(--accent);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons svg {
+            width: 24px;
+            height: 24px;
+            fill: #ffffff;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons svg:hover {
+            transform: scale(1.2);
+        }
+
+        /* Chat Button */
+        .chat-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--accent);
+            color: #ffffff;
+            padding: 1rem;
+            border-radius: 50%;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .chat-button svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            background: var(--primary);
+            color: #ffffff;
+            padding: 0.75rem;
+            border-radius: 50%;
+            display: none;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .back-to-top.show {
+            display: block;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: var(--bg);
+                padding: 1rem;
+                box-shadow: var(--shadow);
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .timeline-item:nth-child(even) {
+                flex-direction: column;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <img src="assets/img/logo.png" alt="Cloud Loft Hosting" class="logo" />
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">Learn More</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <button id="toggle-theme">Dark Mode</button>
-  </header>
+    <div class="progress-bar"></div>
 
-  <section class="hero">
-    <h1>Clean, Encrypted Cloud Hosting</h1>
-    <p>Zero-knowledge. Privacy-first. Powered by open-source.</p>
-    <a href="contact.html" class="cta-button">Get Started</a>
-  </section>
+    <!-- Header -->
+    <header>
+        <div class="logo">Cloud Loft Hosting</div>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <button class="theme-toggle" aria-label="Toggle dark mode">
+            <svg viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        </button>
+        <div class="mobile-menu" aria-label="Toggle menu">
+            <svg viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+        </div>
+    </header>
 
-  <section class="plans">
-    <h2>Plans</h2>
-    <div class="plan">
-      <h3>Starter</h3>
-      <p>100GB Encrypted Storage</p>
-      <p>$5/month</p>
-    </div>
-    <div class="plan">
-      <h3>Pro</h3>
-      <p>500GB Storage + File Sharing</p>
-      <p>$10/month</p>
-    </div>
-    <div class="plan">
-      <h3>Business</h3>
-      <p>1TB + Multi-user Access + Admin Tools</p>
-      <p>$25/month</p>
-    </div>
-  </section>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div id="particles-js"></div>
+        <div class="hero-content">
+            <h1>Secure, Solar-Powered Cloud Hosting</h1>
+            <p>Privacy-first, eco-friendly hosting with zero-knowledge encryption.</p>
+            <div>
+                <a href="#pricing" class="cta">Get Started</a>
+                <a href="#contact" class="cta secondary-cta">Try Free</a>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    <p>&copy; 2025 Cloud Loft Hosting. All rights reserved.</p>
-  </footer>
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <h2>Why Choose Us?</h2>
+        <div class="feature-grid">
+            <div class="feature-card" data-tilt>
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <h3>Zero-Knowledge Encryption</h3>
+                <p>Your data is secure, and only you have access.</p>
+            </div>
+            <div class="feature-card" data-tilt>
+                <svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.83L19.55 18H4.45L12 5.83z"/></svg>
+                <h3>99.9% Uptime</h3>
+                <p>Reliable hosting for your critical applications.</p>
+            </div>
+            <div class="feature-card" data-tilt>
+                <svg viewBox="0 0 24 24"><path d="M12 2L1 9l11 7 11-7L12 2zm0 2.83L19.55 9 12 13.17 4.45 9 12 4.83zM1 15l11 7 11-7-11-7-11 7zm11-4.83L19.55 15 12 19.17 4.45 15 12 10.17z"/></svg>
+                <h3>Scalable Infrastructure</h3>
+                <p>Grow effortlessly with our flexible plans.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <h2>Choose Your Plan</h2>
+        <div class="pricing-toggle">
+            <input type="radio" id="monthly" name="pricing" checked>
+            <label for="monthly">Monthly</label>
+            <input type="radio" id="yearly" name="pricing">
+            <label for="yearly">Yearly (Save 20%)</label>
+        </div>
+        <div class="plans">
+            <div class="plan">
+                <h3>Starter</h3>
+                <p class="price-monthly">$10/month</p>
+                <p class="price-yearly">$96/year</p>
+                <ul>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-4.2-4.2-1.4 1.4L9 18l12-12-1.4-1.4z"/></svg> 50GB Storage</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-4.2-4.2-1.4 1.4L9 18l12-12-1.4-1.4z"/></svg> 1TB Bandwidth</li>
+                    <li class="tooltip" data-tooltip="No one, including us, can access your data"><svg viewBox="0 0 24 24"><path d="M9 16.2l-4.2-4.2-1.4 1.4L9 18l12-12-1.4-1.4z"/></svg> Zero-Knowledge Encryption</li>
+                </ul>
+                <a href="#" class="cta">Select Plan</a>
+            </div>
+            <div class="plan popular">
+                <h3>Pro</h3>
+                <p class="price-monthly">$25/month</p>
+                <p class="price-yearly">$240/year</p>
+                <ul>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-4.2-4.2-1.4 1.4L9 18l12-12-1.4-1.4z"/></svg> 200GB Storage</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-4.2-4.2-1.4 1.4L9 18l12-12-1.4-1.4z"/></svg> 5TB Bandwidth</li>
+                    <li class="tooltip" data-tooltip="No one, including us, can access your data"><svg viewBox="0 0 24 24"><path d="M9 16.2l-4.2-4.2-1.4 1.4L9 18l12-12-1.4-1.4z"/></svg> Zero-Knowledge Encryption</li>
+                </ul>
+                <a href="#" class="cta">Select Plan</a>
+            </div>
+            <div class="plan">
+                <h3>Enterprise</h3>
+                <p class="price-monthly">$50/month</p>
+                <p class="price-yearly">$480/year</p>
+                <ul>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-4.2-4.2-1.4 1.4L9 18l12-12-1.4-1.4z"/></svg> 1TB Storage</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-4.2-4.2-1.4 1.4L9 18l12-12-1.4-1.4z"/></svg> Unlimited Bandwidth</li>
+                    <li class="tooltip" data-tooltip="No one, including us, can access your data"><svg viewBox="0 0 24 24"><path d="M9 16.2l-4.2-4.2-1.4 1.4L9 18l12-12-1.4-1.4z"/></svg> Zero-Knowledge Encryption</li>
+                </ul>
+                <a href="#" class="cta">Select Plan</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <p>"Cloud Loft’s encryption gives us peace of mind. Their support is top-notch!"</p>
+                    <h4>Jane Doe, Developer</h4>
+                    <div class="stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <p>"The solar-powered hosting is a game-changer. Fast and reliable!"</p>
+                    <h4>John Smith, CTO</h4>
+                    <div class="stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>Our Mission</h2>
+        <p>At Cloud Loft Hosting, we empower developers, businesses, and privacy-conscious users with secure, eco-friendly cloud solutions. Powered by solar energy and built on independent infrastructure, our zero-knowledge encryption ensures your data remains private — even from us.</p>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>2022</h3>
+                    <p>Founded with a mission to provide green hosting.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>2023</h3>
+                    <p>Launched zero-knowledge encryption platform.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>2025</h3>
+                    <p>Expanded solar-powered data centers globally.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Get in Touch</h2>
+        <form id="contact-form">
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <textarea id="message" placeholder="Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+            <div class="form-message"></div>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h3>About</h3>
+                <ul>
+                    <li><a href="#about">Our Mission</a></li>
+                    <li><a href="#">Team</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Status</a></li>
+                </ul>
+            </div>
+            <div class="newsletter">
+                <h3>Newsletter</h3>
+                <form>
+                    <input type="email" placeholder="Your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="social-icons">
+            <a href="#"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            <a href="#"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+            <a href="#"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/></svg></a>
+        </div>
+        <p>© 2025 Cloud Loft Hosting. All rights reserved.</p>
+    </footer>
+
+    <!-- Chat Button -->
+    <div class="chat-button" aria-label="Chat with us">
+        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+    </div>
+
+    <!-- Back to Top -->
+    <div class="back-to-top" aria-label="Back to top">
+        <svg viewBox="0 0 24 24"><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z"/></svg>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        // Mobile Menu
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const nav = document.querySelector('nav');
+        mobileMenu.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+
+        // Theme Toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.dataset.theme = document.body.dataset.theme === 'dark' ? '' : 'dark';
+            localStorage.setItem('theme', document.body.dataset.theme);
+        });
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.dataset.theme = 'dark';
+        }
+
+        // Scroll Progress
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.querySelector('.progress-bar').style.width = scrollPercent + '%';
+        });
+
+        // Back to Top
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('show', window.scrollY > 300);
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // GSAP Animations
+        gsap.from('.hero-content', { opacity: 0, y: 50, duration: 1, ease: 'power3.out' });
+        gsap.utils.toArray('.feature-card, .plan, .timeline-item, .swiper-slide').forEach((el) => {
+            gsap.from(el, {
+                opacity: 0,
+                y: 50,
+                duration: 0.8,
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 80%',
+                },
+            });
+        });
+
+        // Particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#ffffff' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: '#ffffff', opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 2, direction: 'none', random: true },
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' } },
+                modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } },
+            },
+            retina_detect: true,
+        });
+
+        // Pricing Toggle
+        const pricingToggle = document.querySelectorAll('.pricing-toggle input');
+        pricingToggle.forEach((input) => {
+            input.addEventListener('change', () => {
+                document.querySelectorAll('.price-monthly').forEach((el) => {
+                    el.style.display = input.id === 'monthly' ? 'block' : 'none';
+                });
+                document.querySelectorAll('.price-yearly').forEach((el) => {
+                    el.style.display = input.id === 'yearly' ? 'block' : 'none';
+                });
+            });
+        });
+
+        // Form Validation
+        const form = document.getElementById('contact-form');
+        const formMessage = document.querySelector('.form-message');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            formMessage.style.display = 'block';
+            formMessage.className = 'form-message success';
+            formMessage.textContent = 'Message sent successfully!';
+            form.reset();
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 3000);
+        });
+
+        // Swiper for Testimonials
+        new Swiper('.swiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: { delay: 5000 },
+            pagination: { el: '.swiper-pagination', clickable: true },
+        });
+
+        // Vanilla Tilt
+        VanillaTilt.init(document.querySelectorAll('[data-tilt]'), {
+            max: 15,
+            speed: 400,
+            glare: true,
+            'max-glare': 0.3,
+        });
+    </script>
 </body>
 </html>
-
