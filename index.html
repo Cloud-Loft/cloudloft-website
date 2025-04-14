@@ -9,7 +9,7 @@
     <meta property="og:image" content="https://cloudlofthosting.com/og-image.jpg">
     <meta property="og:url" content="https://cloudlofthosting.com">
     <title>Cloud Loft Hosting - Secure, Solar-Powered Cloud Solutions</title>
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <style>
@@ -761,6 +761,7 @@
             <label for="yearly">Yearly (Save 20%)</label>
         </div>
         <div class="plans">
+            <!-- Inside <section id="pricing" class="pricing"> -->
             <div class="plan">
                 <h3>Starter</h3>
                 <p class="price-monthly">$10/month</p>
@@ -770,8 +771,9 @@
                     <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-4.2-4.2-1.4 1.4L9 18l12-12-1.4-1.4z"/></svg> 1TB Bandwidth</li>
                     <li class="tooltip" data-tooltip="No one, including us, can access your data"><svg viewBox="0 0 24 24"><path d="M9 16.2l-4.2-4.2-1.4 1.4L9 18l12-12-1.4-1.4z"/></svg> Zero-Knowledge Encryption</li>
                 </ul>
-                <a href="#" class="cta">Select Plan</a>
+                <a class="cta">Select Plan</a>
             </div>
+<!-- Repeat for Pro and Enterprise with same <a class="cta">Select Plan</a> -->
             <div class="plan popular">
                 <h3>Pro</h3>
                 <p class="price-monthly">$25/month</p>
@@ -781,7 +783,7 @@
                     <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-4.2-4.2-1.4 1.4L9 18l12-12-1.4-1.4z"/></svg> 5TB Bandwidth</li>
                     <li class="tooltip" data-tooltip="No one, including us, can access your data"><svg viewBox="0 0 24 24"><path d="M9 16.2l-4.2-4.2-1.4 1.4L9 18l12-12-1.4-1.4z"/></svg> Zero-Knowledge Encryption</li>
                 </ul>
-                <a href="#" class="cta">Select Plan</a>
+                <a class="cta">Select Plan</a>
             </div>
             <div class="plan">
                 <h3>Enterprise</h3>
@@ -792,7 +794,7 @@
                     <li><svg viewBox="0 0 24 24"><path d="M9 16.2l-4.2-4.2-1.4 1.4L9 18l12-12-1.4-1.4z"/></svg> Unlimited Bandwidth</li>
                     <li class="tooltip" data-tooltip="No one, including us, can access your data"><svg viewBox="0 0 24 24"><path d="M9 16.2l-4.2-4.2-1.4 1.4L9 18l12-12-1.4-1.4z"/></svg> Zero-Knowledge Encryption</li>
                 </ul>
-                <a href="#" class="cta">Select Plan</a>
+                <a class="cta">Select Plan</a>
             </div>
         </div>
     </section>
@@ -1031,6 +1033,16 @@
             speed: 400,
             glare: true,
             'max-glare': 0.3,
+        });
+
+        // Add to existing <script> in index.html
+        document.querySelectorAll('.plan .cta').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const plan = button.closest('.plan').querySelector('h3').textContent;
+                const cycle = document.querySelector('input[name="pricing"]:checked').id;
+                window.location.href = `payment.html?plan=${plan}&cycle=${cycle}`;
+            });
         });
     </script>
 </body>
